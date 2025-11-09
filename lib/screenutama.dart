@@ -32,7 +32,7 @@ class _Slide1State extends State<Slide1> {
                 top: 310, // Posisi gambar dari atas
                 left: 138, // Posisi gambar dari kiri
                 child: Image.asset(
-                  'images/panda.png', // Pastikan file ada di folder 'assets'
+                  'images/sleepypanda.png', // Pastikan file ada di folder 'assets'
                   width: 128, // Ukuran gambar disesuaikan jika perlu
                   height: 128,
                 ),

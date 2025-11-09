@@ -72,7 +72,7 @@ class _RegisterState extends State<Register> {
               top: 197,
               left: 143,
               child: Image.asset(
-                'images/panda.png',
+                'images/sleepypanda.png',
                 width: 128,
                 height: 128,
               ),
@@ -145,7 +145,7 @@ class _RegisterState extends State<Register> {
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(12),
                       child: Image.asset(
-                        'images/gmail.png',
+                        'images/Gmail.png',
                         width: 10,
                         height: 10,
                       ),

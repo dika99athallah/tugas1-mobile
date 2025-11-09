@@ -93,8 +93,8 @@ flutter:
   fonts:
    - family: Urbanist
      fonts:
-        - asset: fonts/Schyler-Regular.ttf
-        - asset: fonts/Schyler-Italic.ttf
+        - asset: fonts/Schuyler-Regular.ttf
+        - asset: fonts/Schuyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

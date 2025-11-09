@@ -22,7 +22,7 @@ class _LoginRegisterState extends State<LoginRegister> {
               top: 197,
               left: 143,
               child: Image.asset(
-                'images/panda.png',
+                'images/sleepypanda.png',
                 width: 128,
                 height: 128,
               ),

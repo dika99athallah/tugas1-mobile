@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'namescreen.dart';
 import 'register.dart';
 import 'dart:convert';
+import 'forgotpassword.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -86,179 +87,179 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-void _showResetPasswordDialog() {
-  showDialog(
-    context: context,
-    barrierDismissible: true,
-    builder: (BuildContext context) {
-      return Stack(
-        children: [
-          Positioned(
-            bottom: -30, // Menempatkan dialog di bagian bawah
-            left: 0,
-            right: 0,
-            child: Material(
-              color: Colors.transparent, // Background transparan untuk dialog
-              child: Container(
-                width: double.infinity, // Lebar penuh
-                height: 325,
-                decoration: BoxDecoration(
-                  color: Color(0xFF272E49),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                ),
-                padding: EdgeInsets.all(10),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // Tombol close
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context); // Menutup dialog
-                        },
-                        child: Container(
-                          width: 50,
-                          height: 4.5,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF009090),
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                          margin: EdgeInsets.only(bottom: 7),
-                        ),
-                      ),
-                      Text(
-                        'Lupa password?',
-                        style: TextStyle(
-                          fontFamily: 'Urbanist',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                          color: Color(0xFFE7E7E7),
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Instruksi untuk melakukan reset password akan',
-                        style: TextStyle(
-                          fontFamily: 'Urbanist',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        'dikirim melalui email yang kamu gunakan untuk',
-                        style: TextStyle(
-                          fontFamily: 'Urbanist',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        'mendaftar',
-                        style: TextStyle(
-                          fontFamily: 'Urbanist',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(height: 23),
-                      SizedBox(
-                        width: 300,
-                        height: 50,
-                        child: TextField(
-                          controller: _emailController,
-                          style: const TextStyle(
-                            fontFamily: 'Urbanist',
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF333333),
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            hintStyle: const TextStyle(
-                              fontFamily: 'Urbanist',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12,
-                              color: Color(0xFF333333),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xFFF1F3FF), width: 2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xFFF1F3FF), width: 2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            filled: true,
-                            fillColor: const Color(0xFFF1F3FF),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Image.asset(
-                                'images/email2.png',
-                                width: 10,
-                                height: 10,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () async {
-                            final email = _emailController.text.trim();
-                            if (email.isNotEmpty) {
-                              final success = await requestOTP(email);
-                              if (success) {
-                                print("OTP request sent successfully.");
-                                Navigator.pop(context); // Tutup dialog
-                              } else {
-                                print("Failed to send OTP.");
-                              }
-                            } else {
-                              print("Email field is empty!");
-                            }
-                          },
-                          child: Container(
-                            width: 300,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF009090),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Reset Password',
-                              style: TextStyle(
-                                fontFamily: 'Urbanist',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFFFBFBFB),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    },
-  );
-}
+// void _showResetPasswordDialog() {
+//   showDialog(
+//     context: context,
+//     barrierDismissible: true,
+//     builder: (BuildContext context) {
+//       return Stack(
+//         children: [
+//           Positioned(
+//             bottom: -30, // Menempatkan dialog di bagian bawah
+//             left: 0,
+//             right: 0,
+//             child: Material(
+//               color: Colors.transparent, // Background transparan untuk dialog
+//               child: Container(
+//                 width: double.infinity, // Lebar penuh
+//                 height: 325,
+//                 decoration: BoxDecoration(
+//                   color: Color(0xFF272E49),
+//                   borderRadius: BorderRadius.only(
+//                     topLeft: Radius.circular(30),
+//                     topRight: Radius.circular(30),
+//                     bottomLeft: Radius.circular(10),
+//                     bottomRight: Radius.circular(10),
+//                   ),
+//                 ),
+//                 padding: EdgeInsets.all(10),
+//                 child: SingleChildScrollView(
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       // Tombol close
+//                       GestureDetector(
+//                         onTap: () {
+//                           Navigator.pop(context); // Menutup dialog
+//                         },
+//                         child: Container(
+//                           width: 50,
+//                           height: 4.5,
+//                           decoration: BoxDecoration(
+//                             color: Color(0xFF009090),
+//                             borderRadius: BorderRadius.circular(2),
+//                           ),
+//                           margin: EdgeInsets.only(bottom: 7),
+//                         ),
+//                       ),
+//                       Text(
+//                         'Lupa password?',
+//                         style: TextStyle(
+//                           fontFamily: 'Urbanist',
+//                           fontWeight: FontWeight.w600,
+//                           fontSize: 24,
+//                           color: Color(0xFFE7E7E7),
+//                         ),
+//                       ),
+//                       SizedBox(height: 8),
+//                       Text(
+//                         'Instruksi untuk melakukan reset password akan',
+//                         style: TextStyle(
+//                           fontFamily: 'Urbanist',
+//                           fontWeight: FontWeight.w400,
+//                           fontSize: 16,
+//                           color: Colors.white,
+//                         ),
+//                       ),
+//                       Text(
+//                         'dikirim melalui email yang kamu gunakan untuk',
+//                         style: TextStyle(
+//                           fontFamily: 'Urbanist',
+//                           fontWeight: FontWeight.w400,
+//                           fontSize: 16,
+//                           color: Colors.white,
+//                         ),
+//                       ),
+//                       Text(
+//                         'mendaftar',
+//                         style: TextStyle(
+//                           fontFamily: 'Urbanist',
+//                           fontWeight: FontWeight.w400,
+//                           fontSize: 16,
+//                           color: Colors.white,
+//                         ),
+//                       ),
+//                       SizedBox(height: 23),
+//                       SizedBox(
+//                         width: 300,
+//                         height: 50,
+//                         child: TextField(
+//                           controller: _emailController,
+//                           style: const TextStyle(
+//                             fontFamily: 'Urbanist',
+//                             fontSize: 12,
+//                             fontWeight: FontWeight.w600,
+//                             color: Color(0xFF333333),
+//                           ),
+//                           decoration: InputDecoration(
+//                             hintText: 'Email',
+//                             hintStyle: const TextStyle(
+//                               fontFamily: 'Urbanist',
+//                               fontWeight: FontWeight.w600,
+//                               fontSize: 12,
+//                               color: Color(0xFF333333),
+//                             ),
+//                             enabledBorder: OutlineInputBorder(
+//                               borderSide: const BorderSide(
+//                                   color: Color(0xFFF1F3FF), width: 2),
+//                               borderRadius: BorderRadius.circular(10),
+//                             ),
+//                             focusedBorder: OutlineInputBorder(
+//                               borderSide: const BorderSide(
+//                                   color: Color(0xFFF1F3FF), width: 2),
+//                               borderRadius: BorderRadius.circular(10),
+//                             ),
+//                             filled: true,
+//                             fillColor: const Color(0xFFF1F3FF),
+//                             prefixIcon: Padding(
+//                               padding: const EdgeInsets.all(12),
+//                               child: Image.asset(
+//                                 'images/email2.png',
+//                                 width: 10,
+//                                 height: 10,
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                       SizedBox(height: 15),
+//                       Center(
+//                         child: GestureDetector(
+//                           onTap: () async {
+//                             final email = _emailController.text.trim();
+//                             if (email.isNotEmpty) {
+//                               final success = await requestOTP(email);
+//                               if (success) {
+//                                 print("OTP request sent successfully.");
+//                                 Navigator.pop(context); // Tutup dialog
+//                               } else {
+//                                 print("Failed to send OTP.");
+//                               }
+//                             } else {
+//                               print("Email field is empty!");
+//                             }
+//                           },
+//                           child: Container(
+//                             width: 300,
+//                             height: 50,
+//                             decoration: BoxDecoration(
+//                               color: Color(0xFF009090),
+//                               borderRadius: BorderRadius.circular(8),
+//                             ),
+//                             alignment: Alignment.center,
+//                             child: Text(
+//                               'Reset Password',
+//                               style: TextStyle(
+//                                 fontFamily: 'Urbanist',
+//                                 fontSize: 18,
+//                                 fontWeight: FontWeight.w600,
+//                                 color: Color(0xFFFBFBFB),
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }
 
 // Fungsi untuk request OTP
 Future<bool> requestOTP(String email) async {
@@ -297,7 +298,7 @@ Future<bool> requestOTP(String email) async {
               top: 197,
               left: 143,
               child: Image.asset(
-                'images/panda.png',
+                'images/sleepypanda.png',
                 width: 128,
                 height: 128,
               ),
@@ -370,7 +371,7 @@ Future<bool> requestOTP(String email) async {
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(12),
                       child: Image.asset(
-                        'images/gmail.png',
+                        'images/Gmail.png',
                         width: 10,
                         height: 10,
                       ),
@@ -445,8 +446,14 @@ Future<bool> requestOTP(String email) async {
               top: 580,
               left: 260,
               child: GestureDetector(
-                onTap:
-                    _showResetPasswordDialog, // Tampilkan dialog reset password
+                onTap:() {
+                  showModalBottomSheet(
+                    context: context,
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    builder: (context) => ForgotPassword(),
+                  );
+                },
                 child: const Text(
                   'Lupa password?',
                   style: TextStyle(
